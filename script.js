@@ -21,6 +21,11 @@ div.style.marginTop="36px";
 text.style.paddingLeft="10px"
 let counter="0";
 second.addEventListener("click",()=>{
+    if(text.value.trim() === "") {
+        text.style.display = "none";
+        text1.style.display = "none";
+        return;
+    }
     counter++
     text.style.display="none";
     text1.style.display="none";
@@ -30,16 +35,16 @@ second.addEventListener("click",()=>{
     ol.appendChild(li);
     let img=document.createElement("img");
     let span=document.createElement("span");
-    span.textContent=counter +"."+" "+ text.value;
-    text.value="";
+    span.textContent = counter + "." + " " + text.value;
+    text.value = "";
     li.appendChild(span);
     li.appendChild(img);
     img.src="rengsiz.svg";
-    img.style.cursor="pointer"
+    img.style.cursor="pointer";
     img.style.position="absolute";
     img.style.right="26px";
     img.style.marginTop="20px";
-    img.style.color="#c4c4c4"
+    img.style.color="#c4c4c4";
     img.style.display="block";
     li.style.position="relative";
     li.style.paddingBottom="10px";
@@ -48,7 +53,7 @@ second.addEventListener("click",()=>{
     div.style.paddingTop="12px";
     img.addEventListener("click",()=>{
         li.remove();
-        if(ol.children.length==0){
+        if(ol.children.length == 0){
             text.style.display="block";
             text1.style.display="block";
             div.style.display="none";
@@ -57,25 +62,25 @@ second.addEventListener("click",()=>{
                 text.value="";
             })
         }
-    })
+    });
+
     img.addEventListener("mouseenter",()=>{
         img.src="rengli.svg";
-    })
+    });
     img.addEventListener("mouseleave",()=>{
         img.src="rengsiz.svg";
-    })
-})
+    });
+});
 plus.addEventListener("click",()=>{
     text.style.display="block";
     text1.style.display="block";
     text1.style.marginTop="11px";
-})
+});
 sort.addEventListener("click", () => {
-    let a=Array.from(document.querySelectorAll("li"));
+    let a = Array.from(document.querySelectorAll("li"));
     a.sort((li1,li2) => {
-        let v1=li1.querySelector("span").textContent.split(". ")[1];
-        let v2=li2.querySelector("span").textContent.split(". ")[1];
-
+        let v1 = li1.querySelector("span").textContent.split(". ")[1];
+        let v2 = li2.querySelector("span").textContent.split(". ")[1];
         let n1 = Number(v1);
         let n2 = Number(v2);
         if (!isNaN(n1) && !isNaN(n2)) {
@@ -84,37 +89,34 @@ sort.addEventListener("click", () => {
             return ascending ? v1.localeCompare(v2) : v2.localeCompare(v1);
         }
     });
-    a.forEach(li=>ol.appendChild(li));
-    let icon=document.querySelector(".sort")
+    a.forEach(li => ol.appendChild(li));
+    let icon=document.querySelector(".sort");
     icon.addEventListener("mouseenter",()=>{
         if(ascending){
-            icon.src="down-black.svg" 
-        }else{
-            icon.src="up-black.svg" 
+            icon.src="down-black.svg";
+        } else {
+            icon.src="up-black.svg";
         }
     });
     icon.addEventListener("mouseleave",()=>{
         if(ascending){
-            icon.src="down-white.svg"
-        }else{
-            icon.src="up-white.svg"
+            icon.src="down-white.svg";
+        } else {
+            icon.src="up-white.svg";
         }
     });
     if(ascending){
-        icon.src="up-black.svg"
-    }else{
-        icon.src="down-black.svg"
+        icon.src="up-black.svg";
+    } else {
+        icon.src="down-black.svg";
     }
-    ascending=!ascending;
+    ascending = !ascending;
 });
-
-    second.addEventListener("mouseenter",()=>{
-        plus.style.backgroundColor="#9759deff";
-        secondBtn.style.backgroundColor="#7638c1ff";
-
-    })
-    second.addEventListener("mouseleave",()=>{
-        plus.style.backgroundColor="#9953F1";
-        secondBtn.style.backgroundColor="blueviolet";
-    })
-
+second.addEventListener("mouseenter",()=>{
+    plus.style.backgroundColor="#9759deff";
+    secondBtn.style.backgroundColor="#7638c1ff";
+});
+second.addEventListener("mouseleave",()=>{
+    plus.style.backgroundColor="#9953F1";
+    secondBtn.style.backgroundColor="blueviolet";
+});
